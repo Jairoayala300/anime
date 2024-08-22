@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Flv - US</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/akiraClient.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Impact', sans-serif;
+            color: #FF5733;
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .season {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .season h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .episodeSelector {
+            margin-top: 20px;
+            display: none; /* Comienza oculto */
+            /* Usamos flexbox para mostrar los episodios en columnas */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .episodeColumn {
+            /* Establecer ancho máximo para las columnas */
+            max-width: 400px;
+        }
+
+        .e46 button {
+            display: block;
+            background-color: #FF5733;
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .e46 button:hover {
+            background-color: #FF8C66;
+        }
+
+        /* Estilos para la portada del anime */
+        .anime-cover {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .anime-cover img {
+            max-width: 100%;
+        }
+
+        .anime-name {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 24px;
+        }
+
+        /* Estilos para el reproductor de video */
+        #myVideo {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Estilos para el título del episodio y la temporada */
+        #episodeInfo {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Estilos para los botones de navegación */
+        .navigation-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .navigation-buttons button {
+            background-color: #FF5733;
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .navigation-buttons button:hover {
+            background-color: #FF8C66;
+        }
+    </style>
+</head>
+
+<body onload="playFirstEpisode()">
+    <h1>Anime Flv - US</h1>
+
+    <div class="anime-cover">
+        <img src="fondo/tokyo revengers.png" alt="Portada del Anime">
+    </div>
+    <div class="container">
+        <!-- Información de temporada y episodio actual -->
+        <div id="episodeInfo">Temporada: - | Episodio: -</div>
+
+        <video id="myVideo" controls>
+            Tu navegador no soporta el elemento de video.
+        </video>
+
+        <div class="navigation-buttons">
+            <button onclick="playPrevious()">Anterior</button>
+            <button onclick="playNext()">Siguiente</button>
+        </div>
+ 
+<!-- Botón de reproducción aleatoria -->
+<div class="navigation-buttons">
+    <button onclick="playRandomEpisode()">Reproducir Aleatorio</button>
+</div>
+
+
+
+
+        <div class="season">
+            <h2 onclick="toggleSeason('season1')">TEMPORADA 1</h2>
+            <div class="episodeSelector" id="season1">
+                <div class="episodeColumn">
+                    <!-- Episodios del 1 al 25 -->
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/1.mp4')">Episodio 1</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/2.mp4')">Episodio 2</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/3.mp4')">Episodio 3</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/4.mp4')">Episodio 4</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/5.mp4')">Episodio 5</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/6.mp4')">Episodio 6</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/7.mp4')">Episodio 7</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/8.mp4')">Episodio 8</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/9.mp4')">Episodio 9</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/10.mp4')">Episodio 10</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/11.mp4')">Episodio 11</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/12.mp4')">Episodio 12</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/13.mp4')">Episodio 13</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/15.mp4')">Episodio 15</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/16.mp4')">Episodio 16</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/17.mp4')">Episodio 17</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/18.mp4')">Episodio 18</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/19.mp4')">Episodio 19</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/21.mp4')">Episodio 21</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/22.mp4')">Episodio 22</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/23.mp4')">Episodio 23</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/24.mp4')">Episodio 24</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/Tokyo Revengers/1T/3465_16_oYuq.mp4')">Episodio 25</button>
+                    </div>
+                    <!-- Agrega más botones según sea necesario -->
+                </div>
+            </div>
+        </div>
+        <div class="season">
+            <h2 onclick="toggleSeason('season2')">TEMPORADA 2</h2>
+            <div class="episodeSelector" id="season2">
+                <div class="episodeColumn">
+                    <!-- Episodios del 1 al 10 -->
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 11.mp4')">Episodio 11</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 12.mp4')">Episodio 12</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 13.mp4')">Episodio 13</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 14.mp4')">Episodio 14</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 15.mp4')">Episodio 15</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 16.mp4')">Episodio 16</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 17.mp4')">Episodio 17</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 18.mp4')">Episodio 18</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 19.mp4')">Episodio 19</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 20.mp4')">Episodio 20</button>
+                    </div>
+                    <!-- Agrega más botones según sea necesario -->
+                </div>
+            </div>
+        </div>
+        <div class="season">
+            <h2 onclick="toggleSeason('season3')">TEMPORADA 3</h2>
+            <div class="episodeSelector" id="season3">
+                <div class="episodeColumn">
+                    <!-- Episodios del 1 al 10 -->
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 21.mp4')">Episodio 21</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 22.mp4')">Episodio 22</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 23.mp4')">Episodio 23</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 24.mp4')">Episodio 24</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 25.mp4')">Episodio 25</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 26.mp4')">Episodio 26</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 27.mp4')">Episodio 27</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 28.mp4')">Episodio 28</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 29.mp4')">Episodio 29</button>
+                    </div>
+                    <div class="e46">
+                        <button onclick="playVideoAndScroll('videos/DEATH NOTE/Death Note capitulo 30.mp4')">Episodio 30</button>
+                    </div>
+                    <!-- Agrega más botones según sea necesario -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Agrega más temporadas según sea necesario -->
+    </div>
+
+    <script>
+        var currentVideoIndex = 0;
+        var videoSources = [
+            'videos/Tokyo Revengers/1T/1.mp4',
+            'videos/Tokyo Revengers/1T/2.mp4',
+            'videos/Tokyo Revengers/1T/3.mp4',
+            'videos/Tokyo Revengers/1T/4.mp4',
+            'videos/Tokyo Revengers/1T/5.mp4',
+            'videos/Tokyo Revengers/1T/6.mp4',
+            'videos/Tokyo Revengers/1T/7.mp4',
+            'videos/Tokyo Revengers/1T/8.mp4',
+            'videos/Tokyo Revengers/1T/9.mp4',
+            'videos/Tokyo Revengers/1T/10.mp4',
+            'videos/Tokyo Revengers/1T/11.mp4',
+            'videos/Tokyo Revengers/1T/12.mp4',
+            'videos/Tokyo Revengers/1T/13.mp4',
+            'videos/Tokyo Revengers/1T/15.mp4',
+            'videos/Tokyo Revengers/1T/16.mp4',
+            'videos/Tokyo Revengers/1T/17.mp4',
+            'videos/Tokyo Revengers/1T/18.mp4',
+            'videos/Tokyo Revengers/1T/19.mp4',
+            'videos/Tokyo Revengers/1T/21.mp4',
+            'videos/Tokyo Revengers/1T/22.mp4',
+            'videos/Tokyo Revengers/1T/23.mp4',
+            'videos/Tokyo Revengers/1T/24.mp4',
+            'videos/Tokyo Revengers/1T/25.mp4',
+            //
+            ];
+
+// Funciones de reproducción de video
+function playVideo(src) {
+    var video = document.getElementById('myVideo');
+    video.src = src;
+    video.play();
+    currentVideoIndex = videoSources.indexOf(src);
+    updateEpisodeTitle(src); // Actualizar título del episodio
+}
+
+function playNext() {
+    if (currentVideoIndex < videoSources.length - 1) {
+        currentVideoIndex++;
+        playVideo(videoSources[currentVideoIndex]);
+    }
+}
+
+function playPrevious() {
+    if (currentVideoIndex > 0) {
+        currentVideoIndex--;
+        playVideo(videoSources[currentVideoIndex]);
+    }
+}
+
+// Función para mostrar/ocultar episodios de temporada
+function toggleSeason(seasonId) {
+    var season = document.getElementById(seasonId);
+    if (season.style.display === "flex") {
+        season.style.display = "none"; // Cambiar a flex para mostrar en columnas
+    } else {
+        season.style.display = "flex";
+    }
+}
+
+// Función para actualizar el título del episodio actual
+function updateEpisodeTitle(src) {
+    var episodeTitle = document.getElementById('episodeInfo');
+    var episodeName = src.substring(src.lastIndexOf('/') + 1);
+    var seasonNumber = ""; // Variable para almacenar el número de temporada
+    if (src.includes("TEMPORADA 1")) {
+        seasonNumber = "Episodios del 1 al 25";
+    } else if (src.includes("temporada2")) {
+        seasonNumber = "Temporada 2";
+    } // Agrega más condiciones según las temporadas que tengas
+    episodeTitle.textContent = seasonNumber + " | Episodio: " + episodeName;
+}     
+
+// Función para reproducir el primer episodio al cargar la página
+function playFirstEpisode() {
+    playVideo('videos/Tokyo Revengers/1T/1.mp4');
+}
+
+// Función para reproducir el video y desplazar la página hacia abajo
+function playVideoAndScroll(src) {
+    playVideo(src); // Reproducir el video
+    scrollToVideo(); // Desplazar hacia el reproductor de video
+}
+
+// Función para desplazar hacia el reproductor de video
+function scrollToVideo() {
+    var videoElement = document.getElementById('myVideo');
+    videoElement.scrollIntoView({ behavior: 'smooth' });
+
+    // Función para agregar episodios a una temporada
+function addEpisodes(seasonId, episodes) {
+    var seasonContainer = document.getElementById(seasonId);
+    var episodeColumn = seasonContainer.querySelector('.episodeColumn');
+
+    episodes.forEach(function(episode) {
+        var button = document.createElement('button');
+        button.textContent = episode.title;
+        button.onclick = function() {
+            playVideoAndScroll(episode.src);
+        };
+        var episodeDiv = document.createElement('div');
+        episodeDiv.className = 'e46';
+        episodeDiv.appendChild(button);
+        episodeColumn.appendChild(episodeDiv);
+    });
+}
+
+// Llamada a la función para añadir episodios dinámicamente
+var seasonEpisodes = [
+    { title: 'Episodio 31', src: 'videos/DEATH NOTE/Death Note capitulo 31.mp4' },
+    { title: 'Episodio 32', src: 'videos/DEATH NOTE/Death Note capitulo 32.mp4' },
+    // Añadir más episodios según sea necesario
+];
+addEpisodes('season4', seasonEpisodes);
+
+}
+// Función para reproducir un episodio aleatorio
+function playRandomEpisode() {
+    var randomIndex = Math.floor(Math.random() * videoSources.length);
+    playVideo(videoSources[randomIndex]);
+}
+
+// Actualizar barra de progreso del video
+var video = document.getElementById('myVideo');
+video.addEventListener('timeupdate', function() {
+    var progressBar = document.getElementById('videoProgressBar');
+    var progress = (video.currentTime / video.duration) * 100;
+    progressBar.value = progress;
+});
+
+</script>
+</body>
+
+</html>
